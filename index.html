@@ -392,14 +392,14 @@ const MATCHES = [
   {id:86,date:"Vie 03/07",time:"5:00 PM",stadium:"Miami",home:"Argentina",away:"Cabo Verde",phase:"Dieciseisavos"},
   {id:87,date:"Vie 03/07",time:"8:30 PM",stadium:"Kansas City",home:"Colombia",away:"Ghana",phase:"Dieciseisavos"},
   {id:88,date:"Vie 03/07",time:"1:00 PM",stadium:"Dallas",home:"Australia",away:"Egipto",phase:"Dieciseisavos"},
-  {id:89,date:"Sáb 04/07",time:"6:00 PM",stadium:"Filadelfia",home:"G74",away:"G77",phase:"Octavos de Final"},
-  {id:90,date:"Sáb 04/07",time:"6:00 PM",stadium:"Houston",home:"G73",away:"G75",phase:"Octavos de Final"},
-  {id:91,date:"Dom 05/07",time:"5:00 PM",stadium:"Nueva York/NJ",home:"G76",away:"G78",phase:"Octavos de Final"},
-  {id:92,date:"Dom 05/07",time:"9:00 PM",stadium:"Ciudad de México",home:"G79",away:"G80",phase:"Octavos de Final"},
-  {id:93,date:"Lun 06/07",time:"3:00 PM",stadium:"Dallas",home:"G83",away:"G84",phase:"Octavos de Final"},
-  {id:94,date:"Lun 06/07",time:"9:00 PM",stadium:"Seattle",home:"G81",away:"G82",phase:"Octavos de Final"},
-  {id:95,date:"Mar 07/07",time:"1:00 PM",stadium:"Atlanta",home:"G86",away:"G88",phase:"Octavos de Final"},
-  {id:96,date:"Mar 07/07",time:"3:00 PM",stadium:"BC Place Van.",home:"G85",away:"G87",phase:"Octavos de Final"},
+  {id:89,date:"Sáb 04/07",time:"12:00 PM",stadium:"Filadelfia",home:"Canadá",away:"Marruecos",phase:"Octavos de Final"},
+  {id:90,date:"Sáb 04/07",time:"4:00 PM",stadium:"Houston",home:"Paraguay",away:"Francia",phase:"Octavos de Final"},
+  {id:91,date:"Dom 05/07",time:"3:00 PM",stadium:"Nueva York/NJ",home:"Brasil",away:"Noruega",phase:"Octavos de Final"},
+  {id:92,date:"Dom 05/07",time:"7:00 PM",stadium:"Ciudad de México",home:"México",away:"Inglaterra",phase:"Octavos de Final"},
+  {id:93,date:"Lun 06/07",time:"2:00 PM",stadium:"Dallas",home:"Portugal",away:"España",phase:"Octavos de Final"},
+  {id:94,date:"Lun 06/07",time:"7:00 PM",stadium:"Seattle",home:"EE.UU.",away:"Bélgica",phase:"Octavos de Final"},
+  {id:95,date:"Mar 07/07",time:"11:00 AM",stadium:"Atlanta",home:"Argentina",away:"Egipto",phase:"Octavos de Final"},
+  {id:96,date:"Mar 07/07",time:"3:00 PM",stadium:"BC Place Van.",home:"Suiza",away:"Colombia",phase:"Octavos de Final"},
   {id:97,date:"Jue 09/07",time:"5:00 PM",stadium:"Boston",home:"G89",away:"G90",phase:"Cuartos de Final"},
   {id:98,date:"Vie 10/07",time:"3:00 PM",stadium:"Los Ángeles",home:"G93",away:"G94",phase:"Cuartos de Final"},
   {id:99,date:"Sáb 11/07",time:"6:00 PM",stadium:"Miami",home:"G91",away:"G92",phase:"Cuartos de Final"},
@@ -500,6 +500,15 @@ const PRONOSTICOS_RAW = {
   86:[3,0, 2,0, 3,1, 4,0, 3,0, 2,0],
   87:[2,1, 2,0, 2,1, 2,0, 2,0, 2,0],
   88:[1,1, 2,2, 3,1, 1,1, 2,1, 1,2],
+  // OCTAVOS DE FINAL
+  89:[1,2, 1,2, 2,0, 1,2, 2,1, 1,2],
+  90:[1,2, 1,3, 2,3, 0,2, 0,3, 1,2],
+  91:[2,1, 2,2, 2,2, 2,1, 2,3, 3,1],
+  92:[2,0, 2,1, 0,1, 1,2, 2,3, 0,2],
+  93:[1,2, 2,1, 1,3, 2,1, 1,2, 2,2],
+  94:[1,0, 2,2, 2,1, 1,0, 2,0, 2,1],
+  95:[2,0, 2,0, 2,2, 1,0, 3,1, 3,1],
+  96:[1,2, 1,2, 2,2, 2,0, 1,2, 1,3],
 };
 
 // ═══════════════════════════════════════════════════════
@@ -909,23 +918,4 @@ function showToast(msg, type='') {
 function showSection(id) {
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
-  document.getElementById('s-'+id).classList.add('active');
-  event.target.classList.add('active');
-  if(id==='evolucion') renderEvolucion();
-}
-
-function refreshAll() {
-  renderRanking();
-  renderFixture();
-  renderPronosticos();
-  renderStats();
-}
-
-// INIT — carga resultados desde la nube y luego renderiza
-(async () => {
-  await fetchResults();
-  refreshAll();
-})();
-</script>
-</body>
-</html>
+  document
